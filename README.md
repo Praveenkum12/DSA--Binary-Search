@@ -1,5 +1,6 @@
 # Binary Search - 1 Dimensional
 ### 1) Lower Bound
+hint: arr[ind] >= target and also make sure the index is lowest
 ```
 class Solution {
     public int lowerBound(int[] arr, int target) {
@@ -21,6 +22,7 @@ class Solution {
 }
 ```
 ### 2) Upper Bound
+hint: arr[ind] > target and also make sure the index is lowest
 ```
 class Solution {
     public int upperBound(int[] arr, int target) {
@@ -42,6 +44,7 @@ class Solution {
 }
 ```
 ### 3) Select Insert Position
+hint: Just implement the lower bound
 ```
 class Solution {
     public int searchInsert(int[] arr, int target) {
