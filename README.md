@@ -1,4 +1,4 @@
-# Binary Search - 1 Dimensional
+# Binary Search - 1 Dim
 ### 1) Lower Bound
 hint: arr[ind] >= target and also make sure the index is lowest
 ```
