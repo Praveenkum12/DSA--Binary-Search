@@ -146,3 +146,39 @@ class Solution {
     }
 }
 ```
+### 6) Number of Occurences
+```
+public static int count(int arr[], int n, int target) {
+        int first = -1, last = n;
+        int start = 0, end = n-1;
+        int count  = 0;
+
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(arr[mid] >= target){
+                first = mid;
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+
+        if(first==-1 || arr[first] != target) return count;
+
+        start = 0;
+        end = n-1;
+
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(arr[mid] > target){
+                last = mid;
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        last -= 1;
+        count = last - first;
+        return count+1;
+    }
+```
