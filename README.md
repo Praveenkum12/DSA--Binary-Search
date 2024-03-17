@@ -65,3 +65,45 @@ class Solution {
     }
 }
 ```
+### 4) Ceil and Floor
+```
+public class Solution {
+    public static int[] getFloorAndCeil(int[] arr, int n, int target) {
+        int floor = -1;
+        int ceil = -1;
+        int start = 0;
+        int end = n - 1;
+
+        while(start<=end){
+          int mid = start + (end - start) / 2;
+            if(arr[mid] >= target){
+                ceil = arr[mid];
+                end = mid - 1;
+            }
+            else {
+              start = mid + 1;
+            }
+        }
+
+        start = 0;
+        end = n-1;
+
+        while(start<=end){
+          int mid = start + (end - start) / 2;
+            if(arr[mid] <= target){
+                floor = arr[mid];
+                start = mid + 1;
+            }
+            else {
+              end = mid - 1;
+            }
+        }
+
+        int[] ans = new int[2];
+        ans[0] = floor;
+        ans[1] = ceil;
+        return ans;
+    }
+    
+}
+```
