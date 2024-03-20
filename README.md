@@ -304,3 +304,37 @@ public class Solution {
     }
 }
 ```
+### 11) Singel Element in a sorted array
+```
+class Solution {
+    public int singleNonDuplicate(int[] arr) {
+        int n = arr.length;
+        if(n == 1) return arr[0];
+        int start = 1;
+        int end = n - 2;
+
+        if(arr[start] == arr[start-1] && arr[end] !=arr[end+1]) return arr[end+1];
+        if(arr[start] != arr[start-1] && arr[end] ==arr[end+1]) return arr[start-1]; 
+
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(arr[mid] != arr[mid - 1] && arr[mid] != arr[mid+1]) return arr[mid];
+            if(arr[mid] == arr[mid-1]){
+                if((mid-1) % 2 == 0 && mid % 2 == 1) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            } else {
+                if((mid % 2 == 0) && (mid+1) % 2 == 1) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+}
+```
+
