@@ -384,3 +384,25 @@ public class Solution {
 	}
 }
 ```
+### 2) Find Nth root of M
+```
+public class Solution {
+    public static int NthRoot(int pow, int target) {
+        int start = 1;
+        int end = target;
+
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(Math.pow(mid, pow) == target) return mid;
+            if(Math.pow(mid, pow) < target){
+                start = mid + 1;
+            }
+            else{
+                 end = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+}
+```
