@@ -357,7 +357,7 @@ class Solution {
     }
 }
 ```
-# Bineray Search in Answer
+# Binary Search in Answer
 ### 1) Square root of a number
 ```
 public class Solution {
