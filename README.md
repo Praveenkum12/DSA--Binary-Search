@@ -357,3 +357,30 @@ class Solution {
     }
 }
 ```
+# Bineray Search in Answer
+### 1) Square root of a number
+```
+public class Solution {
+	public static int sqrtN(long n) {
+		long start = 1;
+		long end = n;
+		while(start <= end){
+			long mid = start + (end - start) / 2;
+			long temp = mid * mid;
+			if(temp == n) {
+				return (int)mid;
+			}
+			if(temp > n) {
+				end = mid - 1;
+			} else if(temp < n){
+				start = mid + 1;
+			}
+		}
+		if(end * end > n){
+			return (int)start;
+		} else {
+			return (int)end;
+		}
+	}
+}
+```
