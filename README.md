@@ -406,3 +406,77 @@ public class Solution {
     }
 }
 ```
+### 3) Min. number of making m bouquets
+```
+class Solution {
+    public int minDays(int[] arr, int m, int k) {
+        long val = (long) m * k;
+        int n = arr.length;
+        if (val > n) return -1;
+        int mini = Integer.MAX_VALUE, maxi = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            mini = Math.min(mini, arr[i]);
+            maxi = Math.max(maxi, arr[i]);
+        }
+        int low = mini, high = maxi;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (possible(arr, mid, m, k)) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return low;
+    }
+
+    static boolean possible(int[] arr, int day, int m, int k){
+        int n = arr.length;
+        int cnt = 0;
+        int noOfB = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] <= day) {
+                cnt++;
+            } else {
+                noOfB += (cnt / k);
+                cnt = 0;
+            }
+        }
+        noOfB += (cnt / k);
+        return noOfB >= m;
+    }
+}
+```
+### 4) Find the Smallest Divisor Given a Threshold
+```
+class Solution {
+    public int smallestDivisor(int[] arr, int threshold) {
+        int n = arr.length;
+        int max = Integer.MIN_VALUE;
+        for(int x: arr){
+            max = Math.max(max, x);
+        }
+        int start = 1;
+        int end = max;
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(fun(arr, threshold, start, mid, end)){
+                end = mid - 1;
+            }
+            else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+
+    static boolean fun(int[] arr, int threshold, int start, int mid, int end){
+        int sum = 0;
+        for(int x: arr){
+            sum += (int) Math.ceil((double)x / mid);
+        }
+        if(sum <= threshold) return true;
+        else return false;
+    }
+}
+```
