@@ -480,3 +480,46 @@ class Solution {
     }
 }
 ```
+### 5) Capacity to Ship Packages within D Days
+```
+class Solution {
+    public int shipWithinDays(int[] arr, int d) {
+        int n = arr.length;
+        int maxi = Integer.MIN_VALUE;
+        int sum = 0;
+        for(int val: arr){
+            maxi = Math.max(maxi, val);
+            sum += val;
+        }
+        int start = maxi;
+        int end = sum;
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            if(fun(arr, start, mid, end, d)){
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+
+    static boolean fun(int[] arr, int start, int mid, int end, int d){
+        int sum = 0;
+        int daysCount = 1;
+
+        for(int i=0; i<arr.length; i++){
+            if(sum + arr[i] > mid) {
+                daysCount++;
+                sum = arr[i];
+            }
+            else {
+                sum += arr[i];
+            }
+        }
+
+        if(daysCount <= d) return true;
+        return false;
+    }
+}
+```
